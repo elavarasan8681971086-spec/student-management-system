@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">S</span><div><strong>CampusDesk</strong><small>Student Management</small></div></div>
+      <nav>
+        <a class="nav-link active" href="#dashboard" data-view="dashboard"><span>▦</span> Dashboard</a>
+        <a class="nav-link" href="#students" data-view="students"><span>♙</span> Students</a>
+        <a class="nav-link" href="#add-student" data-view="add"><span>＋</span> Add Student</a>
+      </nav>
+      <div class="sidebar-note"><span class="note-dot"></span><div><b>Demo mode</b><small>Data is saved in this browser.</small></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">STUDENT PORTAL</p><h1 id="page-title">Dashboard</h1></div>
+        <div class="top-actions"><span class="today" id="today"></span><button class="primary-btn" id="top-add">＋ Add student</button></div>
+      </header>
+
+      <section class="view" id="dashboard-view">
+        <div class="welcome-card">
+          <div><p class="eyebrow light">CAMPUS OVERVIEW</p><h2>Manage your students<br>in one simple place.</h2><p>Register students, keep records organized, and quickly find the information you need.</p><button class="light-btn" id="welcome-add">＋ Register a student</button></div>
+          <div class="welcome-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="cap">▰</div><div class="art-card"><b>STUDENT<br>SUCCESS</b><span>Learn • Grow • Achieve</span></div></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Total students</span><span class="stat-icon purple">♙</span></div><strong id="total-count">0</strong><small>All registered records</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Computer Science</span><span class="stat-icon blue">⌘</span></div><strong id="cse-count">0</strong><small>Students in CSE</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Other departments</span><span class="stat-icon orange">▤</span></div><strong id="other-count">0</strong><small>Across other departments</small></article>
+        </div>
+        <section class="panel">
+          <div class="panel-heading"><div><h3>Recently added students</h3><p>Your latest student records</p></div><button class="text-btn" id="view-all">View all →</button></div>
+          <div id="recent-table"></div>
+        </section>
+        <p class="footer-note">CampusDesk Student Management System · Student demo project</p>
+      </section>
+
+      <section class="view hidden" id="students-view">
+        <section class="panel">
+          <div class="panel-heading list-heading"><div><h3>All students</h3><p>Search, review, edit, or remove student records.</p></div><button class="primary-btn" id="list-add">＋ Add student</button></div>
+          <div class="toolbar"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search name, ID, email..."></label><select id="department-filter" aria-label="Filter by department"><option value="">All departments</option><option>CSE</option><option>ECE</option><option>EEE</option><option>Mechanical</option><option>Civil</option><option>IT</option><option>Other</option></select></div>
+          <div id="students-table"></div>
+        </section>
+      </section>
+
+      <section class="view hidden" id="add-view">
+        <section class="panel form-panel">
+          <div class="panel-heading"><div><h3 id="form-title">Register a student</h3><p>Enter the student details below.</p></div></div>
+          <form id="student-form">
+            <input type="hidden" id="student-key">
+            <div class="form-grid">
+              <label>Student ID <span>*</span><input id="student-id" required maxlength="20" placeholder="e.g. SRM2026001"></label>
+              <label>Full name <span>*</span><input id="student-name" required maxlength="80" placeholder="Enter full name"></label>
+              <label>Email address <span>*</span><input id="student-email" type="email" required placeholder="student@example.com"></label>
+              <label>Phone number<input id="student-phone" type="tel" maxlength="20" placeholder="Enter phone number"></label>
+              <label>Department <span>*</span><select id="student-dept" required><option value="">Choose department</option><option>CSE</option><option>ECE</option><option>EEE</option><option>Mechanical</option><option>Civil</option><option>IT</option><option>Other</option></select></label>
+              <label>Year of study <span>*</span><select id="student-year" required><option value="">Choose year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select></label>
+              <label>CGPA (0–10)<input id="student-cgpa" type="number" min="0" max="10" step="0.01" placeholder="e.g. 8.25"></label>
+              <label>Status <span>*</span><select id="student-status" required><option>Active</option><option>Inactive</option></select></label>
+            </div>
+            <p class="form-error hidden" id="form-error" role="alert"></p>
+            <div class="form-actions"><button type="button" class="secondary-btn" id="cancel-form">Cancel</button><button type="submit" class="primary-btn" id="save-student">Save student</button></div>
+          </form>
+        </section>
+      </section>
+    </main>
+  </div>
+  <div class="toast hidden" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
