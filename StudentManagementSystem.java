@@ -290,7 +290,7 @@ class Student implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String[] SUBJECTS =
-            {"Maths", "Physics", "Chemistry", "English", "Computer Science"};
+            {"Maths", "Data Structure", "Operating System ", "OOSE", "Computer Science"};
     public static final int PASS_MARK = 40;
     public static final double MIN_ATTENDANCE = 75.0;
 
